@@ -37,6 +37,9 @@
             this.btn_comp = new System.Windows.Forms.CheckBox();
             this.txt_comp = new System.Windows.Forms.RichTextBox();
             this.chb_wordwrap = new System.Windows.Forms.CheckBox();
+            this.btn_file_A = new System.Windows.Forms.Button();
+            this.btn_file_B = new System.Windows.Forms.Button();
+            this.ofd_FileBrowser = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.spl_Texts)).BeginInit();
             this.spl_Texts.Panel1.SuspendLayout();
             this.spl_Texts.Panel2.SuspendLayout();
@@ -59,17 +62,18 @@
             // spl_Texts.Panel2
             // 
             this.spl_Texts.Panel2.Controls.Add(this.txt_B);
-            this.spl_Texts.Size = new System.Drawing.Size(400, 157);
+            this.spl_Texts.Size = new System.Drawing.Size(400, 151);
             this.spl_Texts.SplitterDistance = 199;
             this.spl_Texts.SplitterWidth = 2;
             this.spl_Texts.TabIndex = 0;
             // 
             // txt_A
             // 
+            this.txt_A.DetectUrls = false;
             this.txt_A.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_A.Location = new System.Drawing.Point(0, 0);
             this.txt_A.Name = "txt_A";
-            this.txt_A.Size = new System.Drawing.Size(199, 157);
+            this.txt_A.Size = new System.Drawing.Size(199, 151);
             this.txt_A.TabIndex = 6;
             this.txt_A.Text = "";
             this.txt_A.TextChanged += new System.EventHandler(this.txt_A_TextChanged);
@@ -77,10 +81,11 @@
             // 
             // txt_B
             // 
+            this.txt_B.DetectUrls = false;
             this.txt_B.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_B.Location = new System.Drawing.Point(0, 0);
             this.txt_B.Name = "txt_B";
-            this.txt_B.Size = new System.Drawing.Size(199, 157);
+            this.txt_B.Size = new System.Drawing.Size(199, 151);
             this.txt_B.TabIndex = 7;
             this.txt_B.Text = "";
             this.txt_B.TextChanged += new System.EventHandler(this.txt_B_TextChanged);
@@ -126,11 +131,12 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_comp.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_comp.DetectUrls = false;
             this.txt_comp.Enabled = false;
             this.txt_comp.Location = new System.Drawing.Point(12, 33);
             this.txt_comp.Name = "txt_comp";
             this.txt_comp.ReadOnly = true;
-            this.txt_comp.Size = new System.Drawing.Size(400, 157);
+            this.txt_comp.Size = new System.Drawing.Size(400, 151);
             this.txt_comp.TabIndex = 5;
             this.txt_comp.Text = "";
             this.txt_comp.Visible = false;
@@ -142,7 +148,7 @@
             this.chb_wordwrap.AutoSize = true;
             this.chb_wordwrap.Checked = true;
             this.chb_wordwrap.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chb_wordwrap.Location = new System.Drawing.Point(175, 196);
+            this.chb_wordwrap.Location = new System.Drawing.Point(173, 190);
             this.chb_wordwrap.Name = "chb_wordwrap";
             this.chb_wordwrap.Size = new System.Drawing.Size(78, 17);
             this.chb_wordwrap.TabIndex = 6;
@@ -150,11 +156,43 @@
             this.chb_wordwrap.UseVisualStyleBackColor = true;
             this.chb_wordwrap.CheckedChanged += new System.EventHandler(this.chb_wordwrap_CheckedChanged);
             // 
+            // btn_file_A
+            // 
+            this.btn_file_A.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_file_A.Location = new System.Drawing.Point(12, 190);
+            this.btn_file_A.Name = "btn_file_A";
+            this.btn_file_A.Size = new System.Drawing.Size(75, 23);
+            this.btn_file_A.TabIndex = 7;
+            this.btn_file_A.Text = "File A";
+            this.btn_file_A.UseVisualStyleBackColor = true;
+            this.btn_file_A.Click += new System.EventHandler(this.btn_file_A_Click);
+            // 
+            // btn_file_B
+            // 
+            this.btn_file_B.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_file_B.Location = new System.Drawing.Point(337, 190);
+            this.btn_file_B.Name = "btn_file_B";
+            this.btn_file_B.Size = new System.Drawing.Size(75, 23);
+            this.btn_file_B.TabIndex = 7;
+            this.btn_file_B.Text = "File B";
+            this.btn_file_B.UseVisualStyleBackColor = true;
+            this.btn_file_B.Click += new System.EventHandler(this.btn_file_B_Click);
+            // 
+            // ofd_FileBrowser
+            // 
+            this.ofd_FileBrowser.Filter = "All files|*.*";
+            this.ofd_FileBrowser.InitialDirectory = "%USERPROFILE%\\Desktop";
+            this.ofd_FileBrowser.Multiselect = true;
+            this.ofd_FileBrowser.Title = "Select a text file X";
+            this.ofd_FileBrowser.FileOk += new System.ComponentModel.CancelEventHandler(this.ofd_FileBrowser_FileOk);
+            // 
             // frm_TxtDiff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 225);
+            this.Controls.Add(this.btn_file_B);
+            this.Controls.Add(this.btn_file_A);
             this.Controls.Add(this.chb_wordwrap);
             this.Controls.Add(this.txt_comp);
             this.Controls.Add(this.btn_comp);
@@ -184,6 +222,9 @@
         private System.Windows.Forms.RichTextBox txt_A;
         private System.Windows.Forms.RichTextBox txt_B;
         private System.Windows.Forms.CheckBox chb_wordwrap;
+        private System.Windows.Forms.Button btn_file_A;
+        private System.Windows.Forms.Button btn_file_B;
+        private System.Windows.Forms.OpenFileDialog ofd_FileBrowser;
 
     }
 }

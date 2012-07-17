@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WindowsFormsApplication1
 {
@@ -205,12 +206,15 @@ namespace WindowsFormsApplication1
 
         void comp_checked(bool state)
         {
-            lbl_A.Visible = !state;
-            lbl_B.Visible = !state;
+            lbl_A.Enabled = !state;
+            lbl_B.Enabled = !state;
 
             txt_A.Enabled = !state;
             txt_B.Enabled = !state;
             spl_Texts.Visible = !state;
+
+            btn_file_A.Enabled = !state;
+            btn_file_B.Enabled = !state;
 
             txt_comp.Enabled = state;
             txt_comp.Visible = state;
@@ -260,6 +264,30 @@ namespace WindowsFormsApplication1
 
             //Focus back to last focused control
             FocusedControl.Focus();
+        }
+
+        private void btn_file_A_Click(object sender, EventArgs e)
+        {
+            ofd_FileBrowser.Title = "Select a text file A";
+            ofd_FileBrowser.ShowDialog();
+        }
+
+        private void btn_file_B_Click(object sender, EventArgs e)
+        {
+            ofd_FileBrowser.Title = "Select a text file B";
+            ofd_FileBrowser.ShowDialog();
+        }
+
+        private void ofd_FileBrowser_FileOk(object sender, CancelEventArgs e)
+        {
+            if (ofd_FileBrowser.Title == "Select a text file A")
+            {
+                txt_A.Text = File.ReadAllText(ofd_FileBrowser.FileName, Encoding.Default);
+            }
+            else if (ofd_FileBrowser.Title == "Select a text file B")
+            {
+                txt_B.Text = File.ReadAllText(ofd_FileBrowser.FileName, Encoding.Default);
+            }
         }
     }
 }
