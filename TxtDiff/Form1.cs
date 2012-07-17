@@ -239,12 +239,12 @@ namespace WindowsFormsApplication1
 
         private void txt_A_GotFocus(object sender, EventArgs e)
         {
-            FocusedControl = ActiveControl;
+            FocusedControl = spl_Texts.ActiveControl;
         }
 
         private void txt_B_GotFocus(object sender, EventArgs e)
         {
-            FocusedControl = ActiveControl;
+            FocusedControl = spl_Texts.ActiveControl;
         }
 
         private void txt_comp_GotFocus(object sender, EventArgs e)
