@@ -10,5 +10,9 @@ Screenshots
 
 Download
 --------
-* Project ([zip](https://github.com/Ben-Kaniobi/TxtDiff/archive/master.zip)) ([tar.gz](https://github.com/Ben-Kaniobi/TxtDiff/archive/master.tar.gz))
-* [Executable](https://github.com/downloads/Ben-Kaniobi/TxtDiff/TxtDiff.exe)
+* Project ([zip](../../archive/master.zip)) ([tar.gz](../../archive/master.tar.gz))
+* [Executable](../../downloads)
+
+Other
+-----
+If you like TxtDiff, you should check out [Meld](https://github.com/GNOME/meld) which became my favourite diff/merge tool!
